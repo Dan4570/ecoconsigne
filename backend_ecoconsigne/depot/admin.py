@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import  Ecocitoyen, Depot
 
-# Register your models here.
+admin.site.register(Ecocitoyen)
+admin.site.register(Depot)
