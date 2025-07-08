@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./backend_ecoconsigne
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend_ecoconsigne:/app
+
+  metabase:
+    image: metabase/metabase
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./metabase-share:/metabase-data
+      - ./backend_ecoconsigne/db.sqlite3:/data/db.sqlite3
