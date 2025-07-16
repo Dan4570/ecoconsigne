@@ -19,5 +19,8 @@ class Depot(models.Model):
     nb_verre = models.IntegerField(default=0)
     nb_metal = models.IntegerField(default=0)
 
+    montant = models.FloatField(null=True, blank=True)
+    regle = models.BooleanField(default=False)
+
     def __str__(self):
         return f"Depot {self.date} - {self.ecocitoyen.nom}"
