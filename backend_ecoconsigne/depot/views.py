@@ -51,7 +51,7 @@ def get_last_depot(request, rfid):
     except Ecocitoyen.DoesNotExist:
         return JsonResponse({"error": "Utilisateur non trouvé"}, status=404)
 
-# --- Nouvelle fonction à ajouter ---
+# --- Nouvelle fonction à ajouter ---nnnnn
 
 def ecocitoyens_json(request):
     ecocitoyens = Ecocitoyen.objects.all().values(
