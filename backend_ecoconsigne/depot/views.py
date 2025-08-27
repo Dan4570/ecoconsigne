@@ -1,6 +1,5 @@
 from django.http import JsonResponse
 from .models import Ecocitoyen, Depot
-from django.shortcuts import get_object_or_404
 
 # --- API 1 : Identification éco-citoyen ---
 def get_info_rfid(request, rfid):
@@ -45,14 +44,15 @@ def get_last_depot(request, rfid):
         }
     return JsonResponse(data)
 
-# --- Optionnel : liste de tous les éco-citoyens ---
+# --- Liste complète des écocitoyens ---
 def ecocitoyens_json(request):
     ecocitoyens = Ecocitoyen.objects.all().values(
         'id', 'nom', 'prenom', 'date_naissance', 'email', 'telephone', 'commune', 'rfid'
     )
     return JsonResponse(list(ecocitoyens), safe=False)
 
-# --- API recherche par ID (facultatif) ---
+# --- Recherche par ID ---
+from django.shortcuts import get_object_or_404
 def get_ecocitoyen_by_id(request, id):
     eco = get_object_or_404(Ecocitoyen, pk=id)
     data = {
